@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vip-shop</title>
+</head>
+<body>
+<h1>vip shop</h1>
+{% for vip in vip_all %}
+
+    {{ vip.vip_name }} ----> {{ vip.vip_price }}
+        ---- {{ vip.vip_description }} ----
+    <br>
+
+
+{% endfor %}
+
+<form method="POST">
+    {% csrf_token %}
+    <select title="Vip mode" name="vipse" id="vipse">
+
+        <option value="Private">Private</option>
+        <option value="Sergeant">Sergeant</option>
+        <option value="Lieutenant">Lieutenant</option>
+
+    </select>
+    <input type="submit" value="Submit">
+
+</form>
+
+
+</body>
+</html>

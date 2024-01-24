@@ -11,10 +11,11 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 from social_core.pipeline.social_auth import social_user
 from social_core.pipeline.user import get_username
-
+import os
 from dayz_website.config import *
 
 from pathlib import Path
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,6 +28,12 @@ SECRET_KEY = 'django-insecure-wet#*1k50f1i+s$xrdsw5btu=*^!ie@=f9f$9xda$nbdj%h*ha
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+# SANDBOX MODE
+
+MERCHANT = "00000000-0000-0000-0000-000000000000"
+
+SANDBOX = True
 
 ALLOWED_HOSTS = []
 
@@ -41,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'dayz_website',
+
 ]
 
 MIDDLEWARE = [
@@ -54,6 +62,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'dayz_website.urls'
+
+
+os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
 
 TEMPLATES = [
     {

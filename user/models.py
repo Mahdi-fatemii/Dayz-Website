@@ -64,3 +64,31 @@ class SteamUser(AbstractBaseUser, PermissionsMixin):
 
     def get_full_name(self):
         return self.personaname
+
+
+class VipLevel(models.Model):
+
+    def __str__(self):
+        return self.user.steamid
+
+    vip_level = models.CharField(max_length=100, default='Normal')
+    user = models.OneToOneField(SteamUser, on_delete=models.CASCADE)
+
+
+class Vip(models.Model):
+
+    def __str__(self):
+        return self.vip_name
+
+    vip_name = models.CharField(max_length=100)
+    vip_description = models.CharField(max_length=300)
+    vip_price = models.FloatField()
+
+
+class Payment(models.Model):
+    price = models.FloatField()
+    vip_name = models.CharField(max_length=100)
+    description = models.CharField(max_length=100)
+    date_created = models.CharField(max_length=100, default=timezone.now)
+    status = models.CharField(max_length=100, default='Pending')
+    user = models.OneToOneField(SteamUser, on_delete=models.CASCADE)
