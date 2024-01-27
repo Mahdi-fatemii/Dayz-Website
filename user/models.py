@@ -86,8 +86,12 @@ class Vip(models.Model):
 
 
 class Payment(models.Model):
+
+    def __str__(self):
+        return self.user.steamid
+
     price = models.FloatField()
-    vip_name = models.CharField(max_length=100)
+    vip_name = models.CharField(max_length=100, default='Normal')
     description = models.CharField(max_length=100)
     date_created = models.CharField(max_length=100, default=timezone.now)
     status = models.CharField(max_length=100, default='Pending')

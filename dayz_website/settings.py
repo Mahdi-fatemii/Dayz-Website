@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
+from social_core.pipeline import social_auth
 from social_core.pipeline.social_auth import social_user
 from social_core.pipeline.user import get_username
 import os
@@ -48,6 +49,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'dayz_website',
+    'social_django',
+    'social_core',
 
 ]
 
